@@ -16,7 +16,7 @@ services:
       - key: DB_DRIVER
         value: org.postgresql.Driver
       - key: DB_URL
-        value: jdbc:postgresql://${{campus-lost-db.HOST}}:${{campus-lost-db.PORT}}/${{campus-lost-db.DATABASE}}
+        value: jdbc:postgresql://{{campus-lost-db.HOST}}:{{campus-lost-db.PORT}}/{{campus-lost-db.DATABASE}}
       - key: DB_USERNAME
         fromDatabase:
           name: campus-lost-db
