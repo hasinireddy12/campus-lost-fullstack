@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 
-const API = 'http://localhost:8080/api/items'
-const AUTH_API = 'http://localhost:8080/api/auth'
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080').replace(/\/+$/, '')
+const API = `${API_BASE_URL}/api/items`
+const AUTH_API = `${API_BASE_URL}/api/auth`
 const emptyForm = {
   title: '', description: '', category: 'Electronics', location: '',
   contactName: '', contactEmail: '', itemType: 'LOST', status: 'OPEN'

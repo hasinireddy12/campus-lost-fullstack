@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/items")
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:3000"})
+@CrossOrigin(origins = "${APP_CORS_ORIGINS:http://localhost:5173,http://localhost:3000}")
 public class LostItemController {
     private final LostItemRepository repository;
 

@@ -1,0 +1,29 @@
+databases:
+  - name: campus-lost-db
+    databaseName: campus_lost
+    user: campus_lost
+    plan: free
+
+services:
+  - type: web
+    name: campus-lost-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    healthCheckPath: /api/items
+    envVars:
+      - key: DB_DRIVER
+        value: org.postgresql.Driver
+      - key: DB_URL
+        value: jdbc:postgresql://${{campus-lost-db.HOST}}:${{campus-lost-db.PORT}}/${{campus-lost-db.DATABASE}}
+      - key: DB_USERNAME
+        fromDatabase:
+          name: campus-lost-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: campus-lost-db
+          property: password
+      - key: APP_CORS_ORIGINS
+        value: http://localhost:5173,http://localhost:3000

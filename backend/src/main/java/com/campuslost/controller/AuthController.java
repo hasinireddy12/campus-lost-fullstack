@@ -12,7 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:3000"})
+@CrossOrigin(origins = "${APP_CORS_ORIGINS:http://localhost:5173,http://localhost:3000}")
 public class AuthController {
     private final AccountRepository accounts;
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();

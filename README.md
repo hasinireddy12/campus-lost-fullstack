@@ -1,13 +1,13 @@
 # Campus Lost & Found — React + Spring Boot + MySQL
 
-A beginner-friendly full-stack starter project:
+A beginner-friendly full-stack project:
 - Frontend: React + Vite
 - Backend: Java 21 + Spring Boot + Spring Web + Spring Data JPA
 - Database: MySQL
 - Features: login/sign-up screen, add lost/found items, list/search items, mark items as claimed, edit and delete records
 
 ## 1. Requirements
-Install Java 21, Maven (or use an IDE with Maven support), Node.js, and MySQL.
+Install Java 21, Maven (or use an IDE with Maven support), Node.js, and MySQL for local development.
 
 ## 2. Create the database
 Open MySQL Workbench or the MySQL command line and run:
@@ -45,6 +45,17 @@ npm run dev
 ```
 
 Open the local URL Vite prints (usually `http://localhost:5173`).
+
+## 5. Deploy to Render and Vercel
+The repository includes a Render Blueprint (`render.yaml`) for the Spring Boot API and PostgreSQL database, plus Vercel SPA routing configuration (`frontend/vercel.json`).
+
+1. In Render, create a new Blueprint from this GitHub repository and apply `render.yaml`. The API is built from `backend/Dockerfile`.
+2. After the API is deployed, copy its public `onrender.com` URL.
+3. In Vercel, import this same GitHub repository and set the project Root Directory to `frontend`.
+4. Add the Vercel environment variable `VITE_API_BASE_URL` with the Render API URL (for example, `https://campus-lost-api.onrender.com`), without a trailing slash, and deploy.
+5. Set Render's `APP_CORS_ORIGINS` environment variable to the exact Vercel site origin (for example, `https://your-project.vercel.app`). Include `http://localhost:5173` as well if you still need local frontend development. Redeploy the Render API after changing it.
+
+The Render Blueprint uses free plans. Render's free PostgreSQL databases expire after 30 days and are not suitable for long-term storage. Before storing important data, upgrade the database to a paid plan and configure backups in Render.
 
 ## API endpoints
 - `GET /api/items` — list all items
