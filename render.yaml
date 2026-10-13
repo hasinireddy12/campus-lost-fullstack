@@ -38,4 +38,4 @@ services:
           name: campus-lost-db
           property: password
       - key: APP_CORS_ORIGINS
-        value: http://localhost:5173,http://localhost:3000
+        value: https://campus-lost-fullstack-frontend.vercel.app,https://campus-lost-fullstack-frontend-43a6tfj6u.vercel.app,http://localhost:5173,http://localhost:3000
