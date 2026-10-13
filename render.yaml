@@ -15,8 +15,20 @@ services:
     envVars:
       - key: DB_DRIVER
         value: org.postgresql.Driver
-      - key: DB_URL
-        value: jdbc:postgresql://{{campus-lost-db.HOST}}:{{campus-lost-db.PORT}}/{{campus-lost-db.DATABASE}}
+      - key: DB_PROTOCOL
+        value: postgresql
+      - key: DB_HOST
+        fromDatabase:
+          name: campus-lost-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: campus-lost-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: campus-lost-db
+          property: database
       - key: DB_USERNAME
         fromDatabase:
           name: campus-lost-db

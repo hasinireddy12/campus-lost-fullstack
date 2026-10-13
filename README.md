@@ -47,7 +47,7 @@ npm run dev
 Open the local URL Vite prints (usually `http://localhost:5173`).
 
 ## 5. Deploy to Render and Vercel
-The repository includes a Render Blueprint (`render.yaml`) for the Spring Boot API and PostgreSQL database, plus Vercel SPA routing configuration (`frontend/vercel.json`).
+The repository includes a Render Blueprint (`render.yaml`) for the Spring Boot API and PostgreSQL database, plus Vercel SPA routing configuration (`frontend/vercel.json`). The backend builds its JDBC URL from Render database properties; local MySQL settings remain the defaults.
 
 1. In Render, create a new Blueprint from this GitHub repository and apply `render.yaml`. The API is built from `backend/Dockerfile`.
 2. After the API is deployed, copy its public `onrender.com` URL.
