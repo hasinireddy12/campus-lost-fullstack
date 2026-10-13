@@ -16,7 +16,7 @@ Open MySQL Workbench or the MySQL command line and run:
 CREATE DATABASE campus_lost;
 ```
 
-Set your MySQL password in the `DB_PASSWORD` environment variable before starting the backend. The default database URL and username are configured in `backend/src/main/resources/application.properties`; override them with `DB_URL` and `DB_USERNAME` if needed. Do not commit database credentials.
+Set your MySQL password in the `DB_PASSWORD` environment variable before starting the backend. The default database connection uses localhost and the `campus_lost` database; override it with `DB_JDBC_URL`, or set `DB_HOST`, `DB_PORT`, `DB_NAME`, and `DB_PROTOCOL` individually. Set `DB_USERNAME` as needed. Do not commit database credentials.
 
 ## 3. Start the backend
 In a terminal:
